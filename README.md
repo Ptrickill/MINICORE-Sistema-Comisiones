@@ -124,10 +124,14 @@ constructor(private ventaRepo: IVentaRepository) {}
 1. Strategy Pattern
 Diferentes estrategias para cálculo de comisiones según el monto:
 
-ComisionBasica: 6% para montos $0 - $600
-ComisionMedia: 8% para montos $601 - $800
-ComisionAlta: 10% para montos $800 - $1000
-ComisionPremium: 15% para montos $1000 en adelante
+### Reglas de Comisión:
+| Rango de Ventas | Porcentaje | Nombre |
+|----------------|------------|---------|
+| $0 - $600 | 6.0% | Comisión Básica |
+| $602 - $800 | 8% | Comisión Media |
+| $800 - $1000 | 10.0% | Comisión Alta |
+| $1000+ | 15.0% | Comisión Premium |
+
 
 // Las estrategias son intercambiables
 const strategy = ComisionFactory.crearEstrategia(monto);

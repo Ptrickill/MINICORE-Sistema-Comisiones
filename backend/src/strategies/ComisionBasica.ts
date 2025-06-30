@@ -4,7 +4,7 @@ import { IComisionStrategy } from '../interfaces/IComisionStrategy';
 
 export class ComisionBasica implements IComisionStrategy {
   calcular(monto: number): number {
-    return monto * 0.05; // 5%
+    return monto * 0.06; // 6%
   }
 
   getTipo(): string {
@@ -12,6 +12,6 @@ export class ComisionBasica implements IComisionStrategy {
   }
 
   getRango(): string {
-    return "$0 - $1,000";
+    return "$0 - $600";
   }
 }

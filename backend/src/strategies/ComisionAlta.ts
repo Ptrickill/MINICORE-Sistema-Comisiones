@@ -12,6 +12,6 @@ export class ComisionAlta implements IComisionStrategy {
   }
 
   getRango(): string {
-    return "$5,000+";
+    return "$801 - $1,000";
   }
 }

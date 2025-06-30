@@ -115,7 +115,7 @@ Cada clase tiene una responsabilidad única:
 - Controller depende de abstracciones, no implementaciones concretas
 - Inyección de dependencias en constructores
 
-```typescript
+typescript
 // El controller depende de la interfaz, no de la implementación
 constructor(private ventaRepo: IVentaRepository) {}
 
@@ -124,9 +124,11 @@ constructor(private ventaRepo: IVentaRepository) {}
 1. Strategy Pattern
 Diferentes estrategias para cálculo de comisiones según el monto:
 
-ComisionBasica: 5% para montos $0 - $1,000
-ComisionMedia: 7.5% para montos $1,000 - $5,000
-ComisionAlta: 10% para montos $5,000+
+ComisionBasica: 6% para montos $0 - $600
+ComisionMedia: 8% para montos $601 - $800
+ComisionAlta: 10% para montos $800 - $1000
+ComisionPremium: 15% para montos $1000 en adelante
+
 // Las estrategias son intercambiables
 const strategy = ComisionFactory.crearEstrategia(monto);
 const comision = strategy.calcular(monto);
@@ -139,7 +141,7 @@ Facilita agregar nuevas reglas de comisión
 Mantiene el código limpio y extensible
 
  Estructura Refactorizada
-
+```
 backend/src/
 ├── interfaces/          # DIP - Abstracciones
 │   ├── IVentaRepository.ts
@@ -158,7 +160,7 @@ backend/src/
 │   └── VentaRepository.ts
 └── routes/             # Solo coordinación
     └── ventas.routes.ts
-
+```
  Beneficios Obtenidos
 
 Mantenibilidad: Código más fácil de modificar y extender
@@ -179,6 +181,7 @@ Código mantenible y extensible
 
 - **🔗 Repositorio GitHub:** https://github.com/Carlooosfif/MINICORE-Sistema-Comisiones
 - **🎥 Video Explicativo:** https://youtu.be/rXaIAjPqxwg
+- **🎥 Video Explicativo 2:** " - " 
 - **🚀 Demo Backend:** https://minicore-sistema-comisiones-production.up.railway.app
 - **💻 Demo Frontend:** https://minicore-sistema-comisiones.vercel.app/
 

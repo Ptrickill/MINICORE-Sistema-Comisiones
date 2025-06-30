@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-// import { initializeDatabase } from './database/connection';
 
 // Importar rutas
 import vendedorRoutes from './routes/vendedor.routes';

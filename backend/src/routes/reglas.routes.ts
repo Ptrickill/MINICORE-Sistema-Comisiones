@@ -1,35 +1,24 @@
-import { Router } from 'express';
+// routes/reglas.routes.ts
+
+import { Router, Request, Response } from 'express';
+import { VentaRepository } from '../repositories/VentaRepository';
 
 const router = Router();
+const ventaRepo = new VentaRepository();
 
-// GET /api/reglas - Obtener todas las reglas
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
     try {
+        const reglas = ventaRepo.obtenerTodasLasReglas();
         res.json({
             success: true,
-            message: 'Ruta de reglas funcionando',
-            data: []
+            message: 'Reglas de comisión obtenidas',
+            data: reglas,
+            total: reglas.length
         });
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: 'Error en ruta reglas',
-            error: error
-        });
-    }
-});
-
-// POST /api/reglas - Crear nueva regla
-router.post('/', async (req, res) => {
-    try {
-        res.json({
-            success: true,
-            message: 'Crear regla - en desarrollo'
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Error creando regla'
+            message: 'Error obteniendo reglas'
         });
     }
 });

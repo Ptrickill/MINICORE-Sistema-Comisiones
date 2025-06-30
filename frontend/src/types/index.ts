@@ -1,11 +1,13 @@
+// types/index.ts
+
 // Interfaces que coinciden con el backend
 export interface Vendedor {
     id: number;
     nombre: string;
     email: string;
     telefono?: string;
-    fecha_ingreso: Date | string;
-    activo: boolean;
+    fecha_ingreso?: Date | string;
+    activo?: boolean;
 }
 
 export interface Ventas {
@@ -21,7 +23,7 @@ export interface Reglas {
     id: number;
     nombre: string;
     monto_min: number;
-    monto_max?: number;
+    monto_max?: number | null;
     porcentaje_comision: number;
     activo: boolean;
     descripcion?: string;
@@ -32,9 +34,14 @@ export interface ComisionCalculada {
     ventas: Ventas[];
     total_ventas: number;
     comision_total: number;
-    regla_aplicada: Reglas;
+    regla_aplicada: {
+        nombre: string;
+        rango: string;
+        porcentaje_comision: number;
+    };
     fecha_inicio: string;
     fecha_fin: string;
+    nota_calculo?: string; // ← NUEVO
 }
 
 export interface ApiResponse<T> {
@@ -52,6 +59,7 @@ export interface ApiResponse<T> {
         total_ventas_periodo: number;
         total_comision_general: number;
         ventas_encontradas: number;
+        sistema_calculo?: string; // ← NUEVO
     };
     nota?: string;
 }
@@ -68,4 +76,12 @@ export interface EstadoCarga {
     error: string | null;
     datos: ComisionCalculada[] | null;
     resumen: any | null;
+}
+
+// ← NUEVA interface para mostrar reglas
+export interface ReglaComisionInfo {
+    rango: string;
+    porcentaje: number;
+    nombre: string;
+    color: string;
 }

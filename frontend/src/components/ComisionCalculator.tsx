@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ComisionCalculada, Vendedor, EstadoCarga, FiltroComisiones } from '../types';
+import { ComisionCalculada, Vendedor, EstadoCarga, FiltroComisiones, ReglaComisionInfo } from '../types';
 import { obtenerComisionesPorFechas, obtenerVendedores } from '../services/api';
 import { format } from 'date-fns';
 import './ComisionCalculator.css';
@@ -7,8 +7,8 @@ import './ComisionCalculator.css';
 const ComisionCalculator: React.FC = () => {
     // Estados
     const [filtros, setFiltros] = useState<FiltroComisiones>({
-        fecha_inicio: '2024-06-01',
-        fecha_fin: '2024-06-30',
+        fecha_inicio: '2025-06-01', // ← CAMBIADO A 2025
+        fecha_fin: '2025-06-30',    // ← CAMBIADO A 2025
         vendedor_id: undefined
     });
 
@@ -20,6 +20,14 @@ const ComisionCalculator: React.FC = () => {
     });
 
     const [vendedores, setVendedores] = useState<Vendedor[]>([]);
+
+    // ← NUEVAS REGLAS ACTUALIZADAS
+    const reglasComision: ReglaComisionInfo[] = [
+        { rango: '$0 - $600', porcentaje: 6.0, nombre: 'Comisión Básica', color: '#10b981' },
+        { rango: '$601 - $800', porcentaje: 8.0, nombre: 'Comisión Media', color: '#3b82f6' },
+        { rango: '$801 - $1,000', porcentaje: 10.0, nombre: 'Comisión Alta', color: '#8b5cf6' },
+        { rango: '$1,000+', porcentaje: 15.0, nombre: 'Comisión Premium', color: '#f59e0b' }
+    ];
 
     // Cargar vendedores al montar el componente
     useEffect(() => {
@@ -83,8 +91,8 @@ const ComisionCalculator: React.FC = () => {
 
     const limpiarFiltros = () => {
         setFiltros({
-            fecha_inicio: '2024-06-01',
-            fecha_fin: '2024-06-30',
+            fecha_inicio: '2025-06-01', // ← CAMBIADO A 2025
+            fecha_fin: '2025-06-30',    // ← CAMBIADO A 2025
             vendedor_id: undefined
         });
         setEstado({
@@ -110,8 +118,29 @@ const ComisionCalculator: React.FC = () => {
     return (
         <div className="comision-calculator">
             <div className="calculator-header">
-                <h2>⚡ Cálculo de Comisiones por Fechas</h2>
-                <p>Funcionalidad CORE - Filtra y calcula comisiones de vendedores</p>
+                <h2>⚡ Cálculo de Comisiones por Sumatoria Mensual</h2>
+                <p>Funcionalidad CORE - Sistema actualizado con nuevas reglas de comisión</p>
+            </div>
+
+            {/* ← NUEVA SECCIÓN: Reglas de Comisión */}
+            <div className="reglas-info">
+                <h3>📊 Reglas de Comisión Actualizadas</h3>
+                <p className="reglas-descripcion">
+                    <strong>Sistema de cálculo:</strong> Las comisiones se calculan sobre la sumatoria total de ventas del período seleccionado, no por venta individual.
+                </p>
+                <div className="reglas-grid">
+                    {reglasComision.map((regla, index) => (
+                        <div key={index} className="regla-card" style={{ borderLeftColor: regla.color }}>
+                            <div className="regla-header">
+                                <span className="regla-nombre">{regla.nombre}</span>
+                                <span className="regla-porcentaje" style={{ color: regla.color }}>
+                                    {regla.porcentaje}%
+                                </span>
+                            </div>
+                            <div className="regla-rango">{regla.rango}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Formulario de filtros */}
@@ -212,6 +241,12 @@ const ComisionCalculator: React.FC = () => {
                             <span className="valor">{estado.resumen.ventas_encontradas}</span>
                         </div>
                     </div>
+                    {/* ← NUEVA información del sistema */}
+                    {estado.resumen.sistema_calculo && (
+                        <div className="sistema-info">
+                            <p><strong>💡 Sistema de cálculo:</strong> {estado.resumen.sistema_calculo}</p>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -229,11 +264,11 @@ const ComisionCalculator: React.FC = () => {
 
                             <div className="comision-stats">
                                 <div className="stat">
-                                    <span className="label">Total Ventas:</span>
+                                    <span className="label">Total Ventas del Período:</span>
                                     <span className="valor">{formatearMoneda(comision.total_ventas)}</span>
                                 </div>
                                 <div className="stat destacado">
-                                    <span className="label">Comisión:</span>
+                                    <span className="label">Comisión Calculada:</span>
                                     <span className="valor">{formatearMoneda(comision.comision_total)}</span>
                                 </div>
                                 <div className="stat">
@@ -243,10 +278,21 @@ const ComisionCalculator: React.FC = () => {
                                     </span>
                                 </div>
                                 <div className="stat">
+                                    <span className="label">Rango:</span>
+                                    <span className="valor">{comision.regla_aplicada.rango}</span>
+                                </div>
+                                <div className="stat">
                                     <span className="label">Cantidad de ventas:</span>
                                     <span className="valor">{comision.ventas.length}</span>
                                 </div>
                             </div>
+
+                            {/* ← NUEVA nota de cálculo */}
+                            {comision.nota_calculo && (
+                                <div className="nota-calculo">
+                                    <p><strong>📝 Nota:</strong> {comision.nota_calculo}</p>
+                                </div>
+                            )}
 
                             {/* Detalle de ventas */}
                             <details className="ventas-detalle">

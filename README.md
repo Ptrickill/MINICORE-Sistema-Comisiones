@@ -185,7 +185,7 @@ Código mantenible y extensible
 
 - **🔗 Repositorio GitHub:** https://github.com/Carlooosfif/MINICORE-Sistema-Comisiones
 - **🎥 Video Explicativo:** https://youtu.be/rXaIAjPqxwg
-- **🎥 Video Explicativo 2:** " - " 
+- **🎥 Video Explicativo 2:** https://youtu.be/73rysrzp3_o
 - **🚀 Demo Backend:** https://minicore-sistema-comisiones-production.up.railway.app
 - **💻 Demo Frontend:** https://minicore-sistema-comisiones.vercel.app/
 

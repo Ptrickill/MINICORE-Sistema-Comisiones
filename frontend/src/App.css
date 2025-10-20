@@ -1,112 +1,110 @@
-/* Variables CSS */
+/* Tema Simple y Colorido - Perfecto para Aprender */
 :root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary-color: #64748b;
-  --accent-color: #10b981;
-  --warning-color: #f59e0b;
-  --error-color: #ef4444;
-  --success-color: #22c55e;
+  /* Colores principales - fáciles de usar */
+  --color-azul: #4285f4;
+  --color-verde: #34a853;
+  --color-naranja: #fbbc05;
+  --color-rojo: #ea4335;
+  --color-morado: #9c27b0;
+  --color-rosa: #e91e63;
   
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-dark: #0f172a;
+  /* Colores de fondo */
+  --bg-blanco: #ffffff;
+  --bg-gris-claro: #f8f9fa;
+  --bg-gris: #e8eaed;
   
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-light: #94a3b8;
+  /* Colores de texto */
+  --texto-oscuro: #202124;
+  --texto-gris: #5f6368;
+  --texto-claro: #9aa0a6;
   
-  --border-color: #e2e8f0;
-  --border-radius: 8px;
-  --border-radius-lg: 12px;
+  /* Sombras simples */
+  --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --sombra-media: 0 4px 20px rgba(0, 0, 0, 0.15);
   
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Bordes redondeados */
+  --radio-pequeño: 8px;
+  --radio-medio: 12px;
+  --radio-grande: 16px;
   
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Transiciones suaves */
+  --transicion: all 0.3s ease;
 }
 
-/* Reset y base */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-family);
-  line-height: 1.6;
-  color: var(--text-primary);
-  background-color: var(--bg-secondary);
-  font-size: 14px;
-}
-
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/* Container */
+/* Container principal */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 20px;
 }
 
-/* Main content */
+/* Contenido principal */
 .main-content {
   flex: 1;
-  padding: 2rem 0;
+  padding: 20px 0;
 }
 
-/* Hero section */
+/* Sección héroe - Simple y atractiva */
 .hero-section {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  color: white;
-  border-radius: var(--border-radius-lg);
-  margin-bottom: 2rem;
+  margin-bottom: 40px;
+  padding: 40px 20px;
+  background: var(--bg-blanco);
+  border-radius: var(--radio-grande);
+  box-shadow: var(--sombra-media);
+  margin: 20px;
 }
 
 .hero-section h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  color: var(--color-azul);
 }
 
 .hero-section .subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--texto-gris);
+  font-weight: 500;
 }
 
 .hero-section .description {
   font-size: 1rem;
-  opacity: 0.8;
+  color: var(--texto-gris);
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Botones */
+/* Botones simples pero bonitos */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
   font-weight: 500;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--radio-medio);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--transicion);
   text-decoration: none;
-  min-height: 40px;
+  min-height: 48px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn:disabled {
@@ -115,112 +113,122 @@ body {
 }
 
 .btn-calcular {
-  background-color: var(--primary-color);
+  background: var(--color-verde);
   color: white;
-  padding: 0.875rem 2rem;
-  font-size: 1rem;
+  padding: 15px 30px;
+  font-size: 18px;
   font-weight: 600;
+  box-shadow: var(--sombra-suave);
 }
 
 .btn-calcular:hover:not(:disabled) {
-  background-color: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  background: #2d8a47;
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
 }
 
 .btn-limpiar {
-  background-color: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-color);
+  background: var(--bg-gris);
+  color: var(--texto-oscuro);
+  border: 2px solid var(--bg-gris);
 }
 
 .btn-limpiar:hover {
-  background-color: var(--border-color);
+  background: var(--bg-blanco);
+  border-color: var(--color-azul);
+  color: var(--color-azul);
 }
 
-/* Cards */
+/* Cards simples y limpias */
 .card {
-  background: var(--bg-primary);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
+  background: var(--bg-blanco);
+  border-radius: var(--radio-medio);
+  box-shadow: var(--sombra-suave);
   overflow: hidden;
+  transition: var(--transicion);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-media);
 }
 
 .card-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--bg-secondary);
+  padding: 24px;
+  border-bottom: 2px solid var(--bg-gris-claro);
+  background: var(--bg-gris-claro);
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 24px;
 }
 
-/* Estados */
+/* Estados de carga */
 .loading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 3rem;
-  color: var(--text-secondary);
+  gap: 20px;
+  padding: 40px;
+  color: var(--texto-gris);
 }
 
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid var(--border-color);
-  border-top: 4px solid var(--primary-color);
+  border: 4px solid var(--bg-gris);
+  border-top: 4px solid var(--color-azul);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: girar 1s linear infinite;
 }
 
-@keyframes spin {
+@keyframes girar {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
 .error {
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  color: var(--error-color);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin: 1rem 0;
+  background: #ffeaea;
+  border: 2px solid var(--color-rojo);
+  color: var(--color-rojo);
+  padding: 20px;
+  border-radius: var(--radio-medio);
+  margin: 20px 0;
 }
 
 .error h3 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .sin-resultados {
   text-align: center;
-  padding: 3rem;
-  color: var(--text-secondary);
-  background: var(--bg-primary);
-  border-radius: var(--border-radius-lg);
-  border: 2px dashed var(--border-color);
+  padding: 60px 20px;
+  color: var(--texto-gris);
+  background: var(--bg-blanco);
+  border-radius: var(--radio-medio);
+  border: 3px dashed var(--bg-gris);
 }
 
 .sin-resultados h3 {
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+  margin-bottom: 15px;
+  color: var(--texto-oscuro);
+  font-size: 1.5rem;
 }
 
-/* Utilidades */
+/* Utilidades simples */
 .text-center { text-align: center; }
 .text-right { text-align: right; }
-.mb-1 { margin-bottom: 0.25rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-3 { margin-bottom: 1rem; }
-.mb-4 { margin-bottom: 1.5rem; }
-.mt-1 { margin-top: 0.25rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 1rem; }
-.mt-4 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 32px; }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }
 
-/* Responsive */
+/* Responsive - fácil de entender */
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2rem;
@@ -231,11 +239,21 @@ body {
   }
   
   .container {
-    padding: 0 0.5rem;
+    padding: 0 15px;
   }
   
   .main-content {
-    padding: 1rem 0;
+    padding: 15px 0;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .btn-calcular {
+    padding: 12px 24px;
+    font-size: 16px;
   }
 }
 
@@ -244,8 +262,26 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Selección de texto */
+/* Selección de texto bonita */
 ::selection {
-  background-color: var(--primary-color);
+  background-color: var(--color-azul);
   color: white;
+}
+
+/* Scrollbar personalizada simple */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-gris-claro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-azul);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3367d6;
 }

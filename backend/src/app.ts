@@ -1,26 +1,55 @@
+/**
+ * 🚀 MINICORE - Sistema de Comisiones de Ventas
+ * Arquitectura MVC con TypeScript y Express
+ * 
+ * @author Danny (Ptrickill)
+ * @version 1.0.0
+ * @description API RESTful para cálculo de comisiones con patrones de diseño
+ */
+
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-// Importar rutas
+// Importar rutas principales
 import vendedorRoutes from './routes/vendedor.routes';
 import ventasRoutes from './routes/ventas.routes';
 import reglasRoutes from './routes/reglas.routes';
 
-// Configuración
+// Importar middlewares personalizados
+import { errorHandler, notFoundHandler } from './middleware/errorHandler';
+
+// Configuración de variables de entorno
 dotenv.config();
+
+// Configuración de la aplicación
 const app = express();
 const PORT = process.env.PORT || 3001;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// 🔧 Configuración de middlewares
+app.use(cors({
+    origin: NODE_ENV === 'development' 
+        ? ['http://localhost:3000', 'http://127.0.0.1:3000']
+        : process.env.FRONTEND_URL,
+    credentials: true
+}));
 
-// Rutas principales
-app.use('/api/vendedores', vendedorRoutes);
-app.use('/api/ventas', ventasRoutes);
-app.use('/api/reglas', reglasRoutes);
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Middleware de logging para desarrollo
+if (NODE_ENV === 'development') {
+    app.use((req, res, next) => {
+        console.log(`📝 ${req.method} ${req.url} - ${new Date().toISOString()}`);
+        next();
+    });
+}
+
+// 🛣️ Configuración de rutas principales
+app.use('/api/vendedores', vendedorRoutes);  // Gestión de vendedores
+app.use('/api/ventas', ventasRoutes);        // ⭐ CORE: Cálculo de comisiones
+app.use('/api/reglas', reglasRoutes);        // Reglas de comisión
 
 // Ruta de salud del servidor
 app.get('/api/health', (req, res) => {
@@ -47,15 +76,9 @@ app.get('/', (req, res) => {
     });
 });
 
-// Manejo de errores
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.error(err.stack);
-    res.status(500).json({
-        success: false,
-        message: 'Error interno del servidor',
-        error: process.env.NODE_ENV === 'development' ? err.message : {}
-    });
-});
+// 🛡️ Manejo de errores centralizado
+app.use(notFoundHandler);  // Rutas no encontradas
+app.use(errorHandler);     // Errores generales
 
 // Inicializar servidor
 const startServer = async () => {

@@ -1,8 +1,8 @@
-#  MINICORE - Sistema de Comisiones de Ventas
+# 🚀 MINICORE - Sistema de Comisiones de Ventas
 
-Tutorial filtrado por fechas React + Node.js + TypeScript. 
+Sistema completo de cálculo de comisiones con arquitectura MVC, diseño moderno y código limpio para desarrolladores en aprendizaje.
 
-## Arquitectura MVC
+## 🏗️ Arquitectura MVC
 
 ### Backend (Node.js + TypeScript + Express)
 - **Models:** Interfaces TypeScript para Vendedor, Ventas y Reglas 
@@ -13,10 +13,12 @@ Tutorial filtrado por fechas React + Node.js + TypeScript.
 - **Services:** Integración con API backend
 - **Types:** Interfaces TypeScript compartidas
 
-## Tecnologías Utilizadas
-- **Backend:** Node.js + TypeScript + Express.js (Patrón MVC)
-- **Frontend:** React + TypeScript
-- **Deploy:** Railway (Backend) + Vercel (Frontend)
+## 💻 Tecnologías Utilizadas
+- **Backend:** Node.js + TypeScript + Express.js (Arquitectura MVC + Patrones de Diseño)
+- **Frontend:** React + TypeScript + CSS Moderno
+- **Estilos:** Diseño colorido y accesible para aprendizaje
+- **Patrones:** Strategy, Factory, Dependency Injection
+- **Desarrollo:** Hot reload, scripts automatizados, git workflow
 
 ##  Funcionalidad CORE - Filtrado de Comisiones por Fechas
 
@@ -28,12 +30,13 @@ Tutorial filtrado por fechas React + Node.js + TypeScript.
 - ✅ **Resumen ejecutivo** - Total de ventas y comisiones del período
 - ✅ **Detalle expandible** - Ver ventas individuales por vendedor
 
-### Reglas de Comisión:
-| Rango de Ventas | Porcentaje | Nombre |
-|----------------|------------|---------|
-| $0 - $1,000 | 5.0% | Comisión Básica |
-| $1,000 - $5,000 | 7.5% | Comisión Media |
-| $5,000+ | 10.0% | Comisión Alta |
+### 💰 Reglas de Comisión Actualizadas:
+| Rango de Ventas | Porcentaje | Estrategia | Descripción |
+|----------------|------------|------------|-------------|
+| $0 - $600 | 6.0% | 🟢 Comisión Básica | Vendedores nuevos |
+| $601 - $800 | 8.0% | 🟡 Comisión Media | Rendimiento estándar |
+| $801 - $1,000 | 10.0% | 🟠 Comisión Alta | Buen desempeño |
+| $1,001+ | 15.0% | 🚀 Comisión Premium | Excelencia en ventas |
 
 ## Instalación y Uso
 
@@ -99,9 +102,25 @@ MINICORE/
 └── README.md                 # Este archivo
 ```
 
-##  Mejores Prácticas Implementadas (Taller Formativo)
+## 🎯 Mejoras Recientes (v1.2.0)
 
-###  Principios SOLID Aplicados
+### ✨ Nuevas Funcionalidades Backend:
+- 🔧 **Middleware de errores centralizado** con logging estructurado
+- 📝 **Documentación completa** en código con JSDoc
+- ✅ **Validaciones mejoradas** con rango de fechas y límites
+- 🛡️ **Manejo de errores robusto** con respuestas consistentes
+- 📊 **Logging de desarrollo** para debugging
+- 🚀 **CORS configurado** para múltiples entornos
+- 📈 **Scripts npm mejorados** para build y desarrollo
+
+### 🎨 Rediseño Frontend Completo:
+- 🌈 **Paleta de colores moderna** (azul, verde, naranja, morado)
+- 💫 **Animaciones suaves** y transiciones elegantes
+- 📱 **Diseño responsive** optimizado para móviles
+- 🎯 **Interfaz intuitiva** perfecta para aprendizaje
+- ⚡ **Performance optimizada** con CSS limpio
+
+##  Principios SOLID Aplicados
 
 #### 1. Single Responsibility Principle (SRP)
 Cada clase tiene una responsabilidad única:
@@ -183,11 +202,10 @@ Código mantenible y extensible
 
 ##  Enlaces del Proyecto
 
-- **🔗 Repositorio GitHub:** https://github.com/Carlooosfif/MINICORE-Sistema-Comisiones
-- **🎥 Video Explicativo:** https://youtu.be/rXaIAjPqxwg
-- **🎥 Video Explicativo 2:** https://youtu.be/73rysrzp3_o
-- **🚀 Demo Backend:** https://minicore-sistema-comisiones-production.up.railway.app
-- **💻 Demo Frontend:** https://minicore-sistema-comisiones.vercel.app/
+- **🔗 Repositorio GitHub:** https://github.com/Ptrickill/MINICORE-Sistema-Comisiones
+- **� Diseño:** Estilo moderno, simple y colorido para aprendizaje
+- **🚀 Demo Local Backend:** http://localhost:3001
+- **💻 Demo Local Frontend:** http://localhost:3000
 
 ##  Documentación MVC + Stack Tecnológico
 
@@ -200,10 +218,10 @@ Código mantenible y extensible
 
 ##  Autor
 
-**Carlos Ochoa**  
- **Contacto:** carlos.ochoa@udla.edu.ec  
- **Universidad:** UDLA  
- **Fecha:** Junio 2025  
- **Proyecto:** Sistema de Comisiones con Patrón MVC  
+**Danny (Ptrickill)**  
+ **Contacto:** [Tu email]  
+ **Repositorio:** https://github.com/Ptrickill/MINICORE-Sistema-Comisiones  
+ **Fecha:** Octubre 2025  
+ **Proyecto:** Sistema de Comisiones con Diseño Moderno y Colorido  
 
 ---

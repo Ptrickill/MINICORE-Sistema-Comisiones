@@ -1,4 +1,13 @@
-// services/ComisionService.ts
+/**
+ * 💰 Servicio de Cálculo de Comisiones - CORE BUSINESS LOGIC
+ * 
+ * Implementa el patrón Strategy para diferentes tipos de comisión
+ * Calcula comisiones basadas en la sumatoria mensual de ventas
+ * 
+ * @author Danny (Ptrickill)
+ * @version 1.2.0
+ * @description Servicio principal para cálculo de comisiones por período
+ */
 
 import { ComisionFactory } from '../factories/ComisionFactory';
 import { VentaRepository } from '../repositories/VentaRepository';
@@ -6,7 +15,14 @@ import { VentaRepository } from '../repositories/VentaRepository';
 export class ComisionService {
   constructor(private ventaRepo: VentaRepository) {}
 
-  // Calcula comisiones por sumatoria mensual de ventas
+  /**
+   * 🎯 MÉTODO PRINCIPAL: Calcula comisiones por período
+   * 
+   * @param fechaInicio Fecha inicio del período (YYYY-MM-DD)
+   * @param fechaFin Fecha fin del período (YYYY-MM-DD)  
+   * @param vendedorId ID específico del vendedor (opcional)
+   * @returns Objeto con comisiones calculadas y resumen ejecutivo
+   */
   calcularComisionesPorPeriodo(fechaInicio: string, fechaFin: string, vendedorId?: string) {
     // Obtener ventas filtradas DEL PERIODO EXACTO
     let ventasFiltradas;

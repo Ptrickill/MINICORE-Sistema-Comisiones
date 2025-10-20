@@ -1,24 +1,32 @@
 {
   "name": "minicore-backend",
-  "version": "1.0.0",
-  "description": "Backend MINICORE - Sistema de comisiones de ventas",
+  "version": "1.2.0",
+  "description": "🚀 MINICORE Backend - Sistema de comisiones con arquitectura MVC y patrones de diseño",
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "npx nodemon src/app.ts",
     "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "npx tsc --watch",
+    "clean": "rimraf dist",
+    "prestart": "npm run build",
+    "lint": "echo \"Linting pendiente\"",
+    "test": "echo \"Tests pendientes - TODO: Agregar Jest\""
   },
   "keywords": [
     "minicore",
     "mvc",
-    "typescript",
+    "typescript", 
     "express",
     "sales",
-    "commission"
+    "commission",
+    "strategy-pattern",
+    "factory-pattern",
+    "dependency-injection",
+    "clean-architecture"
   ],
-  "author": "carlos.ochoa",
-  "license": "ISC",
+  "author": "Danny (Ptrickill)",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",

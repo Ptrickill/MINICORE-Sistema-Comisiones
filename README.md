@@ -6,6 +6,7 @@ Sistema de cálculo de comisiones con **diseño simple para aprendizaje**.
 - **Backend:** Node.js + TypeScript + Express.js
 - **Frontend:** React + TypeScript + CSS Simple
 - **Patrones:** Strategy, Factory, MVC
+- **Deployment:** Netlify + Render + GitHub Actions
 
 ## ⚡ Funcionalidades
 - ✅ **Cálculo de comisiones** por rango de fechas
@@ -22,7 +23,18 @@ Sistema de cálculo de comisiones con **diseño simple para aprendizaje**.
 | $801 - $1,000 | 10% | Alta |
 | $1,001+ | 15% | Premium |
 
-## 🚀 Instalación
+## � Cómo Usar la App
+
+### 🌐 Versión en Vivo
+1. **Abrir:** [App en Netlify](https://glistening-ganache-e11701.netlify.app/)
+2. **Seleccionar fechas** para el cálculo
+3. **Elegir vendedor** (Específico o Todos)
+4. **Ver resultados** con comisiones calculadas
+5. **Resumen** con totales y estadísticas
+
+### 🏠 Desarrollo Local
+
+## �🚀 Instalación
 
 ### Backend
 
@@ -75,10 +87,36 @@ ComisionFactory.crearEstrategia(1200);  // → ComisionPremium
 ```
 
 ## 🔗 Enlaces
+
+### 🌐 Producción (Deployado)
+- **🎨 Frontend:** (https://glistening-ganache-e11701.netlify.app/)
+- **⚡ Backend API:** https://minicore-backend-0o9v.onrender.com
+- **📡 API Health:** https://minicore-backend-0o9v.onrender.com/api/health
+
+### 🏠 Desarrollo Local
 - **Repositorio:** https://github.com/Ptrickill/MINICORE-Sistema-Comisiones
-- **Backend:** http://localhost:3001
-- **Frontend:** http://localhost:3000
+- **Backend Local:** http://localhost:3001
+- **Frontend Local:** http://localhost:3000
+
+## 🚀 Deployment
+
+### ✅ Estado Actual
+- **Frontend:** Deployado en Netlify ✅
+- **Backend:** Deployado en Render ✅  
+- **CORS:** Configurado ✅
+- **API:** Funcionando ✅
+
+### 🛠️ Stack de Producción
+- **Frontend:** Netlify (Gratis)
+- **Backend:** Render (Gratis)
+- **Database:** En memoria (Datos de prueba)
+- **CI/CD:** Auto-deploy desde GitHub
 
 ## 👤 Autor
 **Danny (Ptrickill)** - Octubre 2025
+
+---
+
+### 🎉 ¡App Deployada Exitosamente!
+**Frontend:** Netlify | **Backend:** Render | **Estado:** ✅ Funcionando
 

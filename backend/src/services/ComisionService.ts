@@ -54,23 +54,22 @@ export class ComisionService {
       vendedoresMap.get(venta.vendedor_id).total_ventas_periodo += venta.monto;
     });
 
-    // Calcular comisiones usando Strategy Pattern sobre SUMATORIA MENSUAL
+    // Calcular comisiones usando reglas directas por rangos (más simple)
     const comisiones = Array.from(vendedoresMap.values()).map((vendedorData: any) => {
       const totalVentasPeriodo = vendedorData.total_ventas_periodo;
-      
-      // Factory decide estrategia segun TOTAL del periodo (no venta individual)
-      const strategy = ComisionFactory.crearEstrategia(totalVentasPeriodo);
-      const comisionTotal = strategy.calcular(totalVentasPeriodo);
-      
+
+      // Cálculo directo: 0-600:6%, 601-800:8%, 801-1000:10%, >1000:15%
+      const { comisionTotal, nombre, rango, porcentaje } = this.calcularPorRango(totalVentasPeriodo);
+
       return {
         vendedor: vendedorData.vendedor,
         ventas: vendedorData.ventas,
         total_ventas: totalVentasPeriodo,
         comision_total: Math.round(comisionTotal * 100) / 100,
         regla_aplicada: {
-          nombre: strategy.getTipo(),
-          rango: strategy.getRango(),
-          porcentaje_comision: this.getPorcentajeStrategy(strategy)
+          nombre,
+          rango,
+          porcentaje_comision: porcentaje
         },
         fecha_inicio: fechaInicio,
         fecha_fin: fechaFin,
@@ -92,6 +91,20 @@ export class ComisionService {
     if (tipo.includes('Alta')) return 10.0;
     if (tipo.includes('Premium')) return 15.0;
     return 0;
+  }
+
+  // Cálculo simple por rangos (directo y fácil de leer)
+  private calcularPorRango(monto: number) {
+    if (monto <= 600) {
+      return { comisionTotal: monto * 0.06, nombre: 'Comisión Básica', rango: '$0 - $600', porcentaje: 6 };
+    }
+    if (monto <= 800) {
+      return { comisionTotal: monto * 0.08, nombre: 'Comisión Media', rango: '$601 - $800', porcentaje: 8 };
+    }
+    if (monto <= 1000) {
+      return { comisionTotal: monto * 0.10, nombre: 'Comisión Alta', rango: '$801 - $1,000', porcentaje: 10 };
+    }
+    return { comisionTotal: monto * 0.15, nombre: 'Comisión Premium', rango: '$1,001+', porcentaje: 15 };
   }
 
   // Genera resumen ejecutivo
